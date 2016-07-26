@@ -26,11 +26,11 @@ int getPartition(int* A, int begin, int end)
       {
          if (A[i] <= A[end])
          {
-            swap(a[part+1], a[i]);
+            swap(A[part+1], A[i]);
             ++part;     
          }  
       }
-   swap(A[begin], a[part]);
+   swap(A[begin], A[part]);
    return part;
    }   
 }
