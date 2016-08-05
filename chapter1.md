@@ -42,21 +42,12 @@ _空间复杂度：O（n\*lgn）_
 
 _不稳定。_
 
-
-
-
-
-
-
-
-
 # 归并排序
 
 ## 思路：分治法
 
 * 分解：将序列每次折半划分
 * 合并：将划分后的序列段两两合并后排序
-
 
 ```cpp
 /*一次归并排序
@@ -86,8 +77,6 @@ void merge(int A[], int begin, int mid, int end)
 } 
 ```
 
-
-
 若子表个数为奇数，则最后一个子表无须和其他子表归并（即本趟处理轮空）：若子表个数为偶数，则要注意到最后一对子表中后一个子表区间的上限为n-1
 
 ```cpp
@@ -108,9 +97,12 @@ void mergeSort(int A[], int iArrayLen)
 void mergeSort(int A[], int begin, int end)
 {
     int mid = (end + begin) / 2;
-    mergeSort(A, begin, mid);
-    mergeSort(A, mid+1, end);
-    merge(A, begin, mid, end);
+    if (begin < end)
+    {    
+        mergeSort(A, begin, mid);
+        mergeSort(A, mid+1, end);
+        merge(A, begin, mid, end);
+    }
 }
 ```
 
@@ -125,8 +117,4 @@ void mergeSort(int A[], int begin, int end)
 ### **算法稳定性**
 
 在归并排序中，相等的元素的顺序不会改变，所以它是**稳定的**算法。
-
-
-
-
 
